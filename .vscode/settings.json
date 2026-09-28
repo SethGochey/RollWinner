@@ -1,0 +1,24 @@
+{
+    "Lua.runtime.version": "Lua 5.1",
+    "Lua.diagnostics.globals": [
+        "CreateFrame",
+        "GetChannelName",
+        "IsInGroup",
+        "IsInRaid",
+        "LE_PARTY_CATEGORY_INSTANCE",
+        "print",
+        "RANDOM_ROLL_RESULT",
+        "SendChatMessage",
+        "SlashCmdList",
+        "SLASH_ROLLWINNER1"
+    ]
+}{
+    "chat.tools.terminal.autoApprove": {
+        "printf": true,
+        "true": true,
+        "plutil": true,
+        "command": true,
+        "git check-ignore": true,
+        "git ls-remote": true
+    }
+}
