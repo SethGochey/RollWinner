@@ -1,0 +1,36 @@
+name: Release
+
+# Pushing a tag like v1.0.0 builds the addon zip with the BigWigs packager, attaches it to a
+# GitHub release, and uploads it to CurseForge, Wago and WoWInterface for every site whose
+# project ID is in RollWinner.toc and whose API token secret is set.
+on:
+  push:
+    tags:
+      - "v*"
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    env:
+      CF_API_KEY: ${{ secrets.CF_API_KEY }}
+      WAGO_API_TOKEN: ${{ secrets.WAGO_API_TOKEN }}
+      WOWI_API_TOKEN: ${{ secrets.WOWI_API_TOKEN }}
+      GITHUB_OAUTH: ${{ secrets.GITHUB_TOKEN }}
+    steps:
+      - name: Check out
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Lint
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq luajit lua-check
+          for f in *.lua; do luajit -bl "$f" > /dev/null || exit 1; done
+          luacheck *.lua
+
+      - name: Package and release
+        uses: BigWigsMods/packager@v2

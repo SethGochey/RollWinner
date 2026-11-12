@@ -2,3 +2,6 @@
 *.swp
 *.swo
 .luacheckcache
+# Build output
+dist/
+.release/

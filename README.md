@@ -33,3 +33,9 @@ lua -e 'assert(loadfile("RollWinner.lua"))'
 ```
 
 The addon has no saved settings or GUI.
+
+## Releases
+
+Pushing a `v*` tag (for example `git tag v1.0.0 && git push origin v1.0.0`) runs `.github/workflows/release.yml`, which lints the addon and uses the BigWigs packager to build the zip, write the tag into the TOC's `@project-version@`, and attach it to a GitHub release. It also uploads to CurseForge, Wago, and WoWInterface for each site whose project ID is in `RollWinner.toc` (`X-Curse-Project-ID`, `X-Wago-ID`, `X-WoWI-ID`) and whose token secret (`CF_API_KEY`, `WAGO_API_TOKEN`, `WOWI_API_TOKEN`) is set. Update `CHANGELOG.md` before tagging.
+
+To build the same zip locally, run `./build.sh -v 1.0.0`, adding `-a "<AddOns path>"` to install it as well.

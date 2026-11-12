@@ -1,0 +1,13 @@
+package-as: RollWinner
+
+enable-nolib-creation: no
+
+manual-changelog:
+  filename: CHANGELOG.md
+  markup-type: markdown
+
+ignore:
+  - build.sh
+  - CHANGELOG.md
+  - .luacheckrc
+  - .vscode

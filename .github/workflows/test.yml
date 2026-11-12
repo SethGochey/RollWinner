@@ -1,0 +1,23 @@
+name: Test
+
+on:
+  push:
+    branches: ["**"]
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install LuaJIT and Luacheck
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq luajit lua-check
+
+      - name: Syntax check
+        run: for f in *.lua; do luajit -bl "$f" > /dev/null || exit 1; done
+
+      - name: Luacheck
+        run: luacheck *.lua
