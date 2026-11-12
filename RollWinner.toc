@@ -3,5 +3,7 @@
 ## Notes: Announces the winner of a /roll roll-off.
 ## Author: SethGochey
 ## Version: @project-version@
+## X-Curse-Project-ID: 1800859
+## X-Wago-ID: 56nbLj69
 
 RollWinner.lua
